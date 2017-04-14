@@ -24,10 +24,12 @@ Description:
 '''
 
 # Imports
-import ROLO_utils as utils
+from ROLO_utils import choose_video_sequence, createFolder, locations_from_0_to_1, ROLO_utils
+
 
 import tensorflow as tf
 from tensorflow.models.rnn import rnn, rnn_cell
+from tensorflow.contrib import rnn
 import cv2
 
 import numpy as np
@@ -299,12 +301,12 @@ class ROLO_TF:
 
             for epoch in range(epoches):
                 i = epoch % num_videos
-                [self.w_img, self.h_img, sequence_name, self.training_iters, dummy]= utils.choose_video_sequence(i)
+                [self.w_img, self.h_img, sequence_name, self.training_iters, dummy]= choose_video_sequence(i)
 
                 x_path = os.path.join('benchmark/DATA', sequence_name, 'yolo_heat/')
                 y_path = os.path.join('benchmark/DATA', sequence_name, 'groundtruth_rect.txt')
                 self.output_path = os.path.join('benchmark/DATA', sequence_name, 'rolo_heat_train/')
-                utils.createFolder(self.output_path)
+                createFolder(self.output_path)
                 total_loss = 0
                 id = 0
 
@@ -314,7 +316,7 @@ class ROLO_TF:
                     batch_xs = self.rolo_utils.load_yolo_output_heatmap(x_path, self.batch_size, self.num_steps, id) # [num_of_examples, num_input] (depth == 1)
 
                     batch_ys = self.rolo_utils.load_rolo_gt_test(y_path, self.batch_size, self.num_steps, id)
-                    batch_ys = utils.locations_from_0_to_1(self.w_img, self.h_img, batch_ys)
+                    batch_ys = locations_from_0_to_1(self.w_img, self.h_img, batch_ys)
 
                     # Reshape data to get 3 seq of 5002 elements
                     batch_xs = np.reshape(batch_xs, [self.batch_size, self.num_steps, self.num_input])
@@ -355,7 +357,7 @@ class ROLO_TF:
 
     def ROLO(self, argvs):
 
-            self.rolo_utils= utils.ROLO_utils()
+            self.rolo_utils= ROLO_utils()
             self.rolo_utils.loadCfg()
             self.params = self.rolo_utils.params
 
