@@ -1,5 +1,6 @@
 *~
 
+experiments/testing/*.pyc
 DATA/
 
 \.idea/
