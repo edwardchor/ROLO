@@ -98,7 +98,7 @@ class ROLO_TF:
             # Reshape to prepare input to hidden activation
             _X = tf.reshape(_X, [self.num_steps * self.batch_size, self.num_input]) # (num_steps*batch_size, num_input)
             # Split data because rnn cell needs a list of inputs for the RNN inner loop
-            _X = tf.split(0, self.num_steps, _X) # n_steps * (batch_size, num_input)
+            _X = tf.split(_X, self.num_steps, 0) # n_steps * (batch_size, num_input)
         cell = tf.nn.rnn_cell.LSTMCell(self.num_input, self.num_input)
         state = _istate
         for step in range(self.num_steps):
