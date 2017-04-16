@@ -99,10 +99,13 @@ class ROLO_TF:
             _X = tf.reshape(_X, [self.num_steps * self.batch_size, self.num_input]) # (num_steps*batch_size, num_input)
             # Split data because rnn cell needs a list of inputs for the RNN inner loop
             _X = tf.split(_X, self.num_steps, 0) # n_steps * (batch_size, num_input)
-        cell = tf.nn.rnn_cell.LSTMCell(self.num_input, self.num_input)
+
+        # cell = tf.nn.rnn_cell.LSTMCell(self.num_input, self.num_input)
+        cell = tf.contrib.rnn.LSTMCell(self.num_input, self.num_input)
         state = _istate
         for step in range(self.num_steps):
-            outputs, state = tf.nn.rnn(cell, [_X[step]], state)
+            # outputs, state = tf.nn.rnn(cell, [_X[step]], state)
+            outputs, state = tf.contrib.rnn.static_rnn(cell, [_X[step]], state)
             tf.get_variable_scope().reuse_variables()
         return outputs
 
