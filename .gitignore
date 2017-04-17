@@ -1,7 +1,7 @@
 *~
 
 experiments/testing/*.pyc
-DATA/
+/benchmark/DATA/
 
 \.idea/
 
