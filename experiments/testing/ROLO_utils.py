@@ -310,6 +310,7 @@ class ROLO_utils:
 
 
         def load_yolo_output_test(self, fold, batch_size, num_steps, id):
+
                 paths = [os.path.join(fold,fn) for fn in next(os.walk(fold))[2]]
                 paths = sorted(paths)
                 st= id
