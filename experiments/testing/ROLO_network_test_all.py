@@ -260,7 +260,7 @@ class ROLO_TF:
                     #self.rolo_weights_file= '/u03/Guanghan/dev/ROLO-dev/output/ROLO_model/model_step9_exp2.ckpt'
                     #self.rolo_weights_file= '/u03/Guanghan/dev/ROLO-dev/output/ROLO_model/model_step1_exp2.ckpt'
 
-                    self.rolo_weights_file= '../../Models/model_demo.ckpt'
+                    self.rolo_weights_file= '../Models/model_demo.ckpt'
 
                     self.num_steps = 3  # number of frames as an input sequence
                     print("TESTING ROLO on video sequence: ", sequence_name)
