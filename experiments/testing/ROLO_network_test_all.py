@@ -94,7 +94,7 @@ class ROLO_TF:
     def LSTM_single(self, name,  _X, _istate, _weights, _biases):
 
 
-        with tf.device('/cpu:0'):
+        with tf.device('/gpu:0'):
             # input shape: (batch_size, n_steps, n_input)
             _X = tf.transpose(_X, [1, 0, 2])  # permute num_steps and batch_size
             # Reshape to prepare input to hidden activation
@@ -242,9 +242,9 @@ class ROLO_TF:
 
                     [self.w_img, self.h_img, sequence_name, dummy_1, self.testing_iters] = utils.choose_video_sequence(test)
 
-                    x_path = os.path.join('../../benchmark/DATA', sequence_name, 'yolo_out/')
-                    y_path = os.path.join('../../benchmark/DATA', sequence_name, 'groundtruth_rect.txt')
-                    self.output_path = os.path.join('../../benchmark/DATA', sequence_name, 'rolo_out_test/')
+                    x_path = os.path.join('/home/czy/ROLO/benchmark/DATA', sequence_name, 'yolo_out/')
+                    y_path = os.path.join('/home/czy/ROLO/benchmark/DATA', sequence_name, 'groundtruth_rect.txt')
+                    self.output_path = os.path.join('/home/czy/ROLO/benchmark/DATA', sequence_name, 'rolo_out_test/')
                     utils.createFolder(self.output_path)
 
                     #self.rolo_weights_file = '/u03/Guanghan/dev/ROLO-dev/output/ROLO_model/model_nodrop_30_2.ckpt'  #no dropout
