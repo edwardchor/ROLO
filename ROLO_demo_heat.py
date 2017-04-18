@@ -36,7 +36,7 @@ def main(argv):
     test = 91
 
     [wid, ht, sequence_name, dummy_1, dummy_2] = utils.choose_video_sequence(test)
-
+    print(sequence_name)
     img_fold_path = os.path.join('benchmark/DATA', sequence_name, 'img/')
     gt_file_path= os.path.join('benchmark/DATA', sequence_name, 'groundtruth_rect.txt')
     yolo_out_path= os.path.join('benchmark/DATA', sequence_name, 'yolo_out/')
