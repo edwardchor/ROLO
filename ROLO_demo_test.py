@@ -24,9 +24,11 @@ Description:
 '''
 
 import cv2
+
 import os
 import numpy as np
 import sys
+from cv2 import *
 import ROLO_utils as utils
 '''----------------------------------------main-----------------------------------------------------'''
 def main(argv):
@@ -46,7 +48,7 @@ def main(argv):
     lines = utils.load_dataset_gt( gt_file_path)
 
     # Define the codec and create VideoWriter object
-    fourcc= cv2.cv.CV_FOURCC(*'DIVX')
+    fourcc= cv2.VideoWriter_fourcc(*'DIVX')
     video_name = sequence_name + '_test.avi'
     video_path = os.path.join('output/videos/', video_name)
     video = cv2.VideoWriter(video_path, fourcc, 20, (wid, ht))
@@ -83,6 +85,7 @@ def main(argv):
         utils.createFolder(os.path.join('output/frames/',sequence_name))
         frame_name= os.path.join('output/frames/',sequence_name,str(test_id)+'.jpg')
         print(frame_name)
+        # cv2.imwrite(frame_name, frame)
         cv2.imwrite(frame_name, frame)
         #cv2.imshow('frame',frame)
         #cv2.waitKey(100)
