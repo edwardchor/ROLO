@@ -275,6 +275,6 @@ def main(argvs):
 
 
 if __name__=='__main__':
-        print(tf.__version__)
+        # print(tf.__version__)
         main(' ')
 
