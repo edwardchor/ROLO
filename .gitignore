@@ -1,5 +1,5 @@
 *~
-
+output/*
 experiments/testing/*.pyc
 experiments/training/*.pyc
 heatmap/*.pyc

@@ -33,7 +33,7 @@ import ROLO_utils as utils
 def main(argv):
     ''' PARAMETERS '''
     num_steps= 6
-    test = 91
+    test = 0
 
     [wid, ht, sequence_name, dummy_1, dummy_2] = utils.choose_video_sequence(test)
 
