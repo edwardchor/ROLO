@@ -48,7 +48,7 @@ def main(argv):
     lines = utils.load_dataset_gt( gt_file_path)
 
     # Define the codec and create VideoWriter object
-    fourcc= cv2.VideoWriter_fourcc(*'DIVX')
+    fourcc= cv2.cv.CV_FOURCC(*'DIVX')
     video_name = sequence_name + '_test.avi'
     video_path = os.path.join('output/videos/', video_name)
     video = cv2.VideoWriter(video_path, fourcc, 20, (wid, ht))
