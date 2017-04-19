@@ -1,7 +1,10 @@
 *~
 
 experiments/testing/*.pyc
+experiments/training/*.pyc
+heatmap/*.pyc
 /benchmark/DATA/
+*.pyc
 
 \.idea/
 
