@@ -28,8 +28,9 @@ from ROLO_utils import choose_video_sequence, createFolder, locations_from_0_to_
 
 
 import tensorflow as tf
-from tensorflow.models.rnn import rnn, rnn_cell
+# from tensorflow.models.rnn import rnn, rnn_cell
 from tensorflow.contrib import rnn
+from tensorflow.contrib.rnn import rnn_cell
 import cv2
 
 import numpy as np
