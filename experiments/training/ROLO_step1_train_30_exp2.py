@@ -27,7 +27,9 @@ Description:
 import ROLO_utils as utils
 
 import tensorflow as tf
-from tensorflow.models.rnn import rnn, rnn_cell
+#from tensorflow.models.rnn import rnn, rnn_cell
+from tensorflow.contrib import rnn
+from tensorflow.contrib.rnn import rnn_cell
 import cv2
 
 import numpy as np
@@ -47,7 +49,7 @@ class ROLO_TF:
     imshow = True
     filewrite_img = False
     filewrite_txt = False
-    yolo_weights_file = 'weights/YOLO_small.ckpt'
+    yolo_weights_file = '../../MODELS/YOLO-small.weights'
     alpha = 0.1
     threshold = 0.2
     iou_threshold = 0.5
@@ -58,7 +60,7 @@ class ROLO_TF:
     w_img, h_img = [352, 240]
 
     # ROLO Network Parameters
-    rolo_weights_file = '/u03/Guanghan/dev/ROLO-dev/output/ROLO_model/model_step1_exp2.ckpt'
+    rolo_weights_file = '/home/czy/ROLO/Models/model_step1_exp2.ckpt'
     lstm_depth = 3
     num_steps = 1  # number of frames as an input sequence
     num_feat = 4096
@@ -260,9 +262,9 @@ class ROLO_TF:
                 i = epoch % num_videos
                 [self.w_img, self.h_img, sequence_name, self.training_iters, dummy]= utils.choose_video_sequence(i)
 
-                x_path = os.path.join('benchmark/DATA', sequence_name, 'yolo_out/')
-                y_path = os.path.join('benchmark/DATA', sequence_name, 'groundtruth_rect.txt')
-                self.output_path = os.path.join('benchmark/DATA', sequence_name, 'rolo_out_train/')
+                x_path = os.path.join('/home/czy/ROLO/benchmark/DATA', sequence_name, 'yolo_out/')
+                y_path = os.path.join('/home/czy/ROLO/benchmark/DATA', sequence_name, 'groundtruth_rect.txt')
+                self.output_path = os.path.join('/home/czy/ROLO/benchmark/DATA', sequence_name, 'rolo_out_train/')
                 utils.createFolder(self.output_path)
                 total_loss = 0
                 id = 1
