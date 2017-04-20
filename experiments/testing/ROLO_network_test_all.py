@@ -48,7 +48,7 @@ class ROLO_TF:
     filewrite_img = False
     filewrite_txt = False
     disp_console = True
-    yolo_weights_file = 'weights/YOLO_small.ckpt'
+    yolo_weights_file = '../../Models/yolo-small.weights'
     alpha = 0.1
     threshold = 0.2
     iou_threshold = 0.5
@@ -186,10 +186,10 @@ class ROLO_TF:
                 cycle_time = time.time() - start_time
                 total_time += cycle_time
 
-                #print("ROLO Pred: ", pred_location)
-                #print("len(pred) = ", len(pred_location))
-                #print("ROLO Pred in pixel: ", pred_location[0][0]*self.w_img, pred_location[0][1]*self.h_img, pred_location[0][2]*self.w_img, pred_location[0][3]*self.h_img)
-                #print("correct_prediction int: ", (pred_location + 0.1).astype(int))
+                print("ROLO Pred: ", pred_location)
+                print("len(pred) = ", len(pred_location))
+                print("ROLO Pred in pixel: ", pred_location[0][0]*self.w_img, pred_location[0][1]*self.h_img, pred_location[0][2]*self.w_img, pred_location[0][3]*self.h_img)
+                print("correct_prediction int: ", (pred_location + 0.1).astype(int))
 
                 # Save pred_location to file
                 utils.save_rolo_output_test(self.output_path, pred_location, id, self.num_steps, self.batch_size)

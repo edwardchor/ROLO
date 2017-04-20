@@ -59,8 +59,8 @@ class ROLO_TF:
     w_img, h_img = [352, 240]
 
     # ROLO Network Parameters
-    rolo_weights_file = '/u03/Guanghan/dev/ROLO-dev/model_dropout_20.ckpt'
     # rolo_weights_file = '/u03/Guanghan/dev/ROLO-dev/model_dropout_30.ckpt'
+    rolo_weights_file ='../../Models/model_demo.ckpt'
     lstm_depth = 3
     num_steps = 3  # number of frames as an input sequence
     num_feat = 4096

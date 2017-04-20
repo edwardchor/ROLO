@@ -448,9 +448,16 @@ def createFolder( path):
 
 
 def load_folder( path):
+        # print(path)
+        # p=os.walk(path)
+        # print(type(p))
+        # print(p)
+        # print(list(p))
+        # for path, dirs, files in p:
+        #     dirs = sorted(dirs)
+        #     print(dirs)
         paths = [os.path.join(path,fn) for fn in next(os.walk(path))[2]]
         return sorted(paths)
-
 
 def load_dataset_gt(gt_file):
         txtfile = open(gt_file, "r")
