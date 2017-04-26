@@ -1030,6 +1030,12 @@ def choose_video_sequence(test):
         sequence_name = 'Liquor'
         training_iters = 580
         testing_iters = 1741
+
+    elif test==1001:
+        w_img, h_img = [640, 480]
+        sequence_name = 'Car1'
+        training_iters = 247
+        testing_iters = 742  # 988
     return [w_img, h_img, sequence_name, training_iters, testing_iters]
 
 

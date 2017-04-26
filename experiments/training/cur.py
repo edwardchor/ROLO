@@ -350,6 +350,7 @@ class ROLO_TF:
 
             arguments = self.rolo_utils.argv_parser(argvs)
             print 'Running!'
+<<<<<<< Updated upstream
             # if self.rolo_utils.flag_train is True:
             #     print 'Train Flag!'
             #     self.training(utils.x_path, utils.y_path)
@@ -365,6 +366,23 @@ class ROLO_TF:
             #     self.train_30_2()
 
             self.training(utils.x_path, utils.y_path)
+=======
+            if self.rolo_utils.flag_train is True:
+                print 'Train Flag!'
+                self.training(utils.x_path, utils.y_path)
+            elif self.rolo_utils.flag_track is True:
+                print 'Track Flag!'
+                self.build_networks()
+                self.track_from_file(utils.file_in_path)
+            elif self.rolo_utils.flag_detect is True:
+                print 'Detect Flag!'
+                self.build_networks()
+                self.detect_from_file(utils.file_in_path)
+            else:
+                self.train_30_2()
+
+
+>>>>>>> Stashed changes
 
     '''----------------------------------------main-----------------------------------------------------'''
 def main(argvs):

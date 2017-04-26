@@ -250,7 +250,12 @@ class ROLO_TF:
         init = tf.initialize_all_variables()
 
         # Launch the graph
+<<<<<<< Updated upstream
         with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,log_device_placement=True)) as sess:
+=======
+        with tf.Session(config=tf.ConfigProto(
+      allow_soft_placement=True, log_device_placement=True)) as sess:
+>>>>>>> Stashed changes
             if (self.restore_weights == True):
                 sess.run(init)
                 self.saver.restore(sess, self.rolo_weights_file)
@@ -271,8 +276,14 @@ class ROLO_TF:
 
                 # Keep training until reach max iterations
                 while id  < self.training_iters- self.num_steps:
+<<<<<<< Updated upstream
                     #for d in ['/gpu:0','/gpu:1','/gpu:2','/gpu:3']:
 		    # Load training data & ground truth
+=======
+
+
+                    # Load training data & ground truth
+>>>>>>> Stashed changes
                     batch_xs = self.rolo_utils.load_yolo_output_test(x_path, self.batch_size, self.num_steps, id) # [num_of_examples, num_input] (depth == 1)
 
                     # Apply dropout to batch_xs
