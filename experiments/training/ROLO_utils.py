@@ -328,9 +328,6 @@ class ROLO_utils:
                 return yolo_output_batch
 
 
-
-
-
         def load_yolo_feat_test_MOLO(self, fold, batch_size, num_steps, id):
                 paths = [os.path.join(fold,fn) for fn in next(os.walk(fold))[2]]
                 paths = sorted(paths)

@@ -561,6 +561,47 @@ def debug_3_locations( img, gt_location, yolo_location, rolo_location):
     cv2.waitKey(100)
     return img_cp
 
+def insight_3_locations( img, gt_location, yolo_location, rolo_location):
+    img_cp = img.copy()
+    for i in range(3):  # b-g-r channels
+        if i == 0:
+            location = gt_location; color = (0, 0, 255)  # red for gt
+        elif i == 1:
+            location = yolo_location; color = (255, 0, 0)  # blur for yolo
+        elif i == 2:
+            location = rolo_location; color = (0, 255, 0)  # green for rolo
+        x = int(location[0])
+        y = int(location[1])
+        w = int(location[2])
+        h = int(location[3])
+        if i == 1:
+            cv2.rectangle(img_cp, (x - w // 2, y - h // 2), (x + w // 2, y + h // 2), color, 2)
+        elif i == 0:
+            cv2.rectangle(img_cp, (x, y), (x + w, y + h), color, 2)
+    y_l=yolo_location
+    r_l=rolo_location
+
+    ratio=0.5
+
+    y_x=int(y_l[0])
+    y_y = int(y_l[1])
+    y_w = int(y_l[2])
+    y_h = int(y_l[3])
+
+    if y_x==0 or y_y==0:
+        print('disapper!')
+
+    r_x = int(r_l[0])
+    r_y = int(r_l[1])
+    r_w = int(r_l[2])
+    r_h = int(r_l[3])
+
+    cv2.rectangle(img_cp, (r_x - r_w//2 - int((y_w-r_w)*ratio), r_y +h//2 +int((y_h-r_h)*ratio)), (r_x +r_w//2 + int((y_w-r_w)*ratio), y - r_h//2 - int((y_h-r_h)*ratio)), color, 2)
+
+    cv2.imshow('insight locations', img_cp)
+    cv2.waitKey(100)
+    return img_cp
+
 
 def debug_kalman_locations(img, gt_location, yolo_location):
     img_cp = img.copy()

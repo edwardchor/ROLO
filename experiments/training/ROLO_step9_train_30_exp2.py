@@ -27,7 +27,9 @@ Description:
 import ROLO_utils as utils
 
 import tensorflow as tf
-from tensorflow.models.rnn import rnn, rnn_cell
+#from tensorflow.models.rnn import rnn, rnn_cell
+from tensorflow.contrib import rnn
+from tensorflow.contrib.rnn import rnn_cell
 import cv2
 
 import numpy as np
@@ -47,7 +49,7 @@ class ROLO_TF:
     imshow = True
     filewrite_img = False
     filewrite_txt = False
-    yolo_weights_file = 'weights/YOLO_small.ckpt'
+    yolo_weights_file = '../../MODELS/YOLO-small.weights'
     alpha = 0.1
     threshold = 0.2
     iou_threshold = 0.5
@@ -58,7 +60,7 @@ class ROLO_TF:
     w_img, h_img = [352, 240]
 
     # ROLO Network Parameters
-    rolo_weights_file = '/u03/Guanghan/dev/ROLO-dev/output/ROLO_model/model_step9_exp2.ckpt'
+    rolo_weights_file = '/home/czy/ROLO/Models/model_step1_exp2.ckpt'
     lstm_depth = 3
     num_steps = 9  # number of frames as an input sequence
     num_feat = 4096
